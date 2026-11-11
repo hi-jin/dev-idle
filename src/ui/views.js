@@ -543,16 +543,16 @@
   function resultChoices(n, analysis) {
     const chart = ui.chart.resultHtml(n.log, n.seconds);
     if (!chart) return '';
-    const top = (analysis || []).filter((r) => r.ratio >= 1.05).slice(0, 3);
+    const top = (analysis || []).filter((r) => r.saved >= 5).slice(0, 3);
     const rows = top
       .map((r) => {
-        const gain = r.ratio === Infinity || r.ratio >= 10 ? S.resultChoiceHuge : S.resultChoiceGain(Math.round((r.ratio - 1) * 100));
+        const gain = r.saved === Infinity ? S.resultChoiceHuge : S.resultChoiceGain(ui.timeline.span(r.saved));
         return `<li><span>${ui.clock(r.mark.t)} · ${esc(ui.timeline.markText(r.mark))}</span><b>${gain}</b></li>`;
       })
       .join('');
     return (
       `<div class="result-chart"><small>${S.resultChart}</small>${chart}</div>` +
-      (rows ? `<div class="result-top"><small>${S.resultTop}</small><ol>${rows}</ol></div>` : '')
+      (rows ? `<div class="result-top"><small>${S.resultTop}</small><ol>${rows}</ol><small class="muted">${S.resultTopNote}</small></div>` : '')
     );
   }
 

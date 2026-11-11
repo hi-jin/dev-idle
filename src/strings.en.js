@@ -331,8 +331,9 @@
     whatSame: 'Skipping it would have changed little so far.',
     resultChart: 'Your run',
     resultTop: 'Choices that mattered most',
-    resultChoiceGain: (p) => `+${p}% sale price`,
-    resultChoiceHuge: 'over 10× the sale price',
+    resultChoiceGain: (span) => `${span} sooner`,
+    resultChoiceHuge: 'over 10 min sooner',
+    resultTopNote: 'How much sooner each one got you to this sale price.',
 
     // the window before a choice (2026-11-11)
     dismiss: 'Let go',
@@ -375,7 +376,7 @@
     whyAllReleased: 'Every app is out, so only updates are left. Updates add a little quality each, so building faster barely moves the valuation. Right now the ad campaign moves it most.',
     whyHireIdle: 'There is nothing for it to work on right now.',
     whyHireOnlyUpdates: 'Other agents already hold what is left of this app. This one would only build updates for released apps, so the next release comes no sooner.',
-    whyHireTakes: (names) => `It starts on these right away: ${names}`,
+    whyHireTakes: (names) => `It starts right away on: ${names}`,
     whyHireSmall: (a, b) => `It adds ${a} lines a second. Your team already writes ${b} a second, so the difference is small.`,
     whyHireTakeOver: 'It takes tasks over from a slower agent, so this app ships sooner.',
     whyHireChance: (p) => `It gets these tasks right at least ${p}% of the time.`,

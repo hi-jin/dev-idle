@@ -110,17 +110,30 @@
 
   // The choices of this run that changed the sale price the most, for the
   // result card. Runs just before the sale, while the snapshots still match.
+  // Each choice is measured by time: how much later the run would have
+  // reached the same sale price without it. (A ratio of sale prices says
+  // "over ten times" for every early choice, which tells nothing apart.)
+  const ANALYZE_EXTRA = 600;
   T.analyze = function (s) {
     const now = s.clock.runSeconds;
-    const rate = kpsAt(s);
+    const past = kpsAt(s);
+    const usual = T.kps(s);
+    const rate = (t) => (t <= now ? past(t) : usual);
     const rows = [];
-    for (const [id, x] of Array.from(T.snaps).slice(-60)) {
+    for (const [id, x] of Array.from(T.snaps).slice(-40)) {
       const mark = s.log.marks.find((m) => m.id === id);
       if (!mark) continue;
-      const r = core.whatIf(x.snap, x.action, later(id), now, rate, 2);
-      rows.push({ mark, ratio: r.ratio, taken: r.taken.end, skipped: r.skipped.end });
+      const play = (withChoice, until) => {
+        const c = core.simClone(JSON.parse(x.snap));
+        if (withChoice) core.act(c, x.action);
+        return core.simulate(c, { seconds: Math.max(0, until - c.clock.runSeconds), dt: 2, kps: rate, decisions: later(id) });
+      };
+      const taken = play(true, now);
+      if (!(taken.end > 0)) continue;
+      const at = core.reachTime(play(false, now + ANALYZE_EXTRA), taken.end);
+      rows.push({ mark, saved: at == null ? Infinity : at - now });
     }
-    return rows.sort((a, b) => b.ratio - a.ratio);
+    return rows.sort((a, b) => b.saved - a.saved);
   };
 
   // ---------- forecasts for the open choices ----------
@@ -520,7 +533,7 @@
       const to = Math.max(20, reach * 1.08);
       const w = 600;
       const h = 150;
-      const pad = { l: 40, r: 14, t: 16, b: 22 };
+      const pad = { l: 40, r: 18, t: 22, b: 22 };
       const sx = (t) => pad.l + ((t - now) / to) * (w - pad.l - pad.r);
       const sy = (f) => pad.t + (1 - f) * (h - pad.t - pad.b);
       const parts = [];
@@ -544,7 +557,7 @@
         const above = i === 1 || ends[0] == null || Math.abs(ends[0] - ends[1]) / to > 0.12;
         parts.push(`<circle class="end ${cls[i]}" cx="${x.toFixed(1)}" cy="${sy(1).toFixed(1)}" r="5"/>`);
         // when the two ends are close, the second label goes under the line
-        parts.push(`<text class="end-label ${cls[i]}" x="${x.toFixed(1)}" y="${(sy(1) + (above ? -7 : 16)).toFixed(1)}" text-anchor="middle">${ui.clock(ends[i])}</text>`);
+        parts.push(`<text class="end-label ${cls[i]}" x="${x.toFixed(1)}" y="${(sy(1) + (above ? -10 : 18)).toFixed(1)}" text-anchor="middle">${ui.clock(ends[i])}</text>`);
       });
       return `<svg class="chart-svg progress-svg" viewBox="0 0 ${w} ${h}" role="img">${parts.join('')}</svg>`;
     },

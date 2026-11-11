@@ -198,7 +198,7 @@ small { font-size: 12px; color: var(--muted); }
 .notice.result { max-width: 380px; text-align: center; }
 .result table { margin: 12px auto; text-align: left; }
 .grade { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 0 2px; }
-.grade b { font-size: 76px; line-height: 1; font-weight: 800; color: var(--accent); }
+.grade b { font-size: 60px; line-height: 1; font-weight: 800; color: var(--accent); }
 .grade span { font-size: 15px; font-weight: 600; }
 .grade.g-S b { color: #ef9f27; }
 .grade.g-A b { color: var(--good); }
@@ -505,6 +505,7 @@ table.away td { text-align: right; font-variant-numeric: tabular-nums; padding: 
 .item[data-preview]:hover { border-color: #ef9f27; }
 .result-chart { margin: 10px 0 4px; text-align: left; }
 .result-top { text-align: left; margin-bottom: 8px; }
+.result-top > small.muted { display: block; margin-top: 4px; font-size: 11.5px; }
 .result-top ol { margin: 4px 0 0; padding: 0; list-style: none; }
 .result-top li { display: flex; justify-content: space-between; gap: 10px; padding: 5px 0; border-top: 1px solid var(--line); font-size: 12.5px; }
 .result-top li b { white-space: nowrap; color: var(--good); }

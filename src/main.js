@@ -100,6 +100,8 @@
     document.getElementById('result-close').textContent = S.resultAgain;
     const dialog = document.getElementById('result');
     if (dialog.showModal && !dialog.open) dialog.showModal();
+    // the button at the bottom takes the focus; the grade at the top is what to see first
+    dialog.scrollTop = 0;
   }
 
   // Notes from the core drive toasts and the scene's reactions.

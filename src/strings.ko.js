@@ -334,8 +334,9 @@
     whatSame: '이 선택이 없었어도 지금까지는 거의 비슷했을 거예요.',
     resultChart: '이번 판의 성장',
     resultTop: '가장 큰 영향을 준 선택',
-    resultChoiceGain: (p) => `매각 금액 +${p}%`,
-    resultChoiceHuge: '매각 금액 10배 이상',
+    resultChoiceGain: (span) => `${span} 앞당김`,
+    resultChoiceHuge: '10분 넘게 앞당김',
+    resultTopNote: '각 선택이 이 매각 금액에 닿는 시간을 얼마나 앞당겼는지예요.',
 
     // the window before a choice (2026-11-11)
     dismiss: '내보내기',
