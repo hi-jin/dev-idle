@@ -1,5 +1,7 @@
 # Dev Idle
 
+## [Play it in your browser: hi-jin.github.io/dev-idle](https://hi-jin.github.io/dev-idle/)
+
 A typing idle game. You start as one developer writing a to-do app by hand, hire AI coding agents with what it earns, ship four bigger apps, and sell the company for a grade. A run takes about eight to ten minutes.
 
 I made it for the game assignment of a startup course at KAIST. It runs in the browser with no build step and no server, and it plays in English or Korean.
@@ -8,7 +10,7 @@ I made it for the game assignment of a startup course at KAIST. It runs in the b
 
 ## How to play
 
-Open `index.html`. That is all it needs.
+Follow the link at the top. To run your own copy, download the repository and open `index.html`; there is nothing to install.
 
 Any key writes code. You are not typing real text: every key press puts the next few characters of an open-source file on the monitor and adds lines to the feature you are building. On a phone, tap the desk instead. The first game walks you through the start with a short tutorial, which you can skip.
 
