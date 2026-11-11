@@ -188,6 +188,14 @@
           case 'notice':
             document.getElementById('notice').showModal();
             break;
+          case 'pickLang':
+            app.pickLanguage(d.lang);
+            break;
+          case 'tutorialChoice':
+            // the tutorial offers the choice itself: Accept All on, or left off
+            if (d.choice === 'on') app.act({ type: 'acceptAll', on: true });
+            app.act({ type: 'tutorial', step: app.state.tutorial.step + 1 });
+            break;
           case 'reset':
             app.openWipe();
             break;

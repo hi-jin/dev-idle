@@ -254,6 +254,7 @@ small { font-size: 12px; color: var(--muted); }
 @keyframes pulse { 50% { box-shadow: 0 0 0 6px var(--accent-soft); } }
 .current.empty { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .current.empty p { margin: 0; color: var(--muted); }
+.current.empty button { flex: none; white-space: nowrap; }
 
 .hotfix { margin-top: 10px; padding: 10px 14px; border-radius: 14px; background: var(--bad-soft); }
 .hotfix b { font-size: 12.5px; color: var(--bad); }
@@ -575,6 +576,18 @@ table.away td { text-align: right; font-variant-numeric: tabular-nums; padding: 
 .tut-target { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; animation: tut 1.2s ease-in-out infinite; }
 @keyframes tut { 50% { outline-offset: 6px; } }
 button.danger { background: var(--bad); border-color: var(--bad); color: #ffffff; font-weight: 600; }
+
+/* the tutorial's "here" flag, and the language question on the first start (2026-11-12) */
+.tut-flag { position: absolute; z-index: 8; transform: translate(-50%, -100%); padding: 3px 10px; border-radius: 99px; background: var(--accent); color: var(--on-accent); font-size: 12px; font-weight: 700; pointer-events: none; white-space: nowrap; animation: tut-bob 0.9s ease-in-out infinite alternate; }
+.tut-flag::after { content: ''; position: absolute; left: 50%; top: 100%; margin-left: -6px; border: 6px solid transparent; border-top-color: var(--accent); }
+.tut-flag.under { transform: translate(-50%, 0); }
+.tut-flag.under::after { top: auto; bottom: 100%; border-top-color: transparent; border-bottom-color: var(--accent); }
+.tut-flag[hidden] { display: none; }
+@keyframes tut-bob { to { margin-top: -6px; } }
+.notice.lang-pick { max-width: 360px; text-align: center; }
+.lang-pick h2 { margin: 4px 0 14px; font-size: 18px; line-height: 1.5; }
+.lang-acts { display: flex; gap: 10px; justify-content: center; margin-bottom: 12px; }
+.lang-acts button { flex: 1; padding: 12px 10px; font-size: 16px; }
 
 /* ---------- wide screens: the desk on the left, the chart and the lists on the right ---------- */
 @media (min-width: 980px) {

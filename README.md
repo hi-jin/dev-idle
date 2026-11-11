@@ -12,7 +12,7 @@ I made it for the game assignment of a startup course at KAIST. It runs in the b
 
 Follow the link at the top. To run your own copy, download the repository and open `index.html`; there is nothing to install.
 
-Any key writes code. You are not typing real text: every key press puts the next few characters of an open-source file on the monitor and adds lines to the feature you are building. On a phone, tap the desk instead. The first game walks you through the start with a short tutorial, which you can skip.
+Any key writes code. You are not typing real text: every key press puts the next few characters of an open-source file on the monitor and adds lines to the feature you are building. On a phone, tap the desk instead. The first game walks you through the start with a short tutorial that points at each thing as it comes up. You can skip it.
 
 A run goes like this.
 
@@ -71,7 +71,7 @@ In a window under 980 px wide the two columns stack into one, as on the right ab
 
 | Add to the address | What it does |
 | --- | --- |
-| `?lang=ko` | Korean. The button at the top right also switches, and remembers. |
+| `?lang=ko` | Korean. The game asks for a language on the first start; the button at the top right switches later. |
 | `?touch=1` | The touch controls on a desktop. |
 | `?seed=42` | The same new game every time. A seeded game is never saved. |
 | `?demo=1` | A panel at the bottom to jump stages, add money, start a fire or an event, and run at up to 50 times speed. Saved apart from a normal game. |

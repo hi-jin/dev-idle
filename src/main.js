@@ -201,6 +201,13 @@
       }
       render();
     },
+    pickLanguage(lang) {
+      G.i18n.set(lang);
+      G.i18n.chosen = true;
+      const dialog = document.getElementById('lang');
+      if (dialog.open) dialog.close();
+      app.relabel();
+    },
     // Erasing everything asks first, with what will be lost.
     openWipe() {
       const dialog = document.getElementById('wipe');
@@ -256,6 +263,13 @@
     render();
     if (!storage) ui.toast(S.toastSaveOff, 'warn', 6000);
     if (away) showAway(away);
+    // the very first start: ask for the language before anything else
+    const pick = document.getElementById('lang');
+    if (!G.i18n.chosen && pick && pick.showModal) {
+      pick.showModal();
+      // the language is a choice to make, not something to dismiss
+      pick.addEventListener('cancel', (e) => e.preventDefault());
+    }
 
     // Fixed-step simulation. Elapsed real time is measured each interval, so a
     // throttled background tab catches up (up to an hour) when it comes back.

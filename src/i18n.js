@@ -35,10 +35,14 @@
   };
 
   let start = 'en';
+  // false on the very first start: nobody has picked a language yet, so the
+  // game asks (main.js). English shows behind the question.
+  G.i18n.chosen = false;
   try {
     const asked = new URLSearchParams(window.location.search).get('lang');
     const saved = window.localStorage.getItem(KEY);
     start = sets[asked] ? asked : sets[saved] ? saved : 'en';
+    G.i18n.chosen = !!(sets[asked] || sets[saved]);
   } catch (e) {
     // no storage or no address: English
   }
