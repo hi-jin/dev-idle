@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-text="title">Dev Idle</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:,">
+</head>
+<body>
+<main class="game">
+  <header id="hud" class="hud"></header>
+  <section id="tutorial" aria-live="polite"></section>
+  <!-- one column on a narrow screen, two side by side on a wide one -->
+  <div class="cols">
+    <div class="col col-play">
+      <section id="scene" class="scene" data-label="sceneLabel" aria-label="Your desk. Press any key or tap here to write code."></section>
+      <p id="caption" class="caption"></p>
+      <section id="caffeine"></section>
+      <section id="event" aria-live="polite"></section>
+      <section id="current"></section>
+    </div>
+    <div class="col col-manage">
+      <section id="chart" class="chart"></section>
+      <nav id="tabs" class="tabs" data-label="tabsLabel" aria-label="Sections"></nav>
+      <section id="sheet" class="sheet"></section>
+    </div>
+  </div>
+  <section id="demo"></section>
+  <footer class="footer">
+    <button class="link" data-act="notice" data-text="footerNotice">Open-source notice</button>
+    <span>·</span>
+    <button class="link" data-act="lang" data-text="otherLanguage">한국어</button>
+    <span>·</span>
+    <button class="link" data-act="reset" data-text="resetProgress">Reset progress</button>
+  </footer>
+</main>
+
+<div id="toasts" class="toasts" aria-live="polite"></div>
+
+<dialog id="notice" class="notice">
+  <h2 data-text="noticeTitle">Open-source notice</h2>
+  <p class="small" data-text="noticeLead">The code you type comes from these open-source packages, each used under its own license.</p>
+  <div id="notice-list"></div>
+  <form method="dialog"><button class="primary" data-text="close">Close</button></form>
+</dialog>
+
+<dialog id="away" class="notice">
+  <h2 id="away-title">While you were away</h2>
+  <div id="away-body"></div>
+  <form method="dialog"><button class="primary" id="away-close">Back to work</button></form>
+</dialog>
+
+<dialog id="choice" class="notice choice">
+  <div id="choice-body"></div>
+</dialog>
+
+<dialog id="wipe" class="notice choice">
+  <div id="wipe-body"></div>
+</dialog>
+
+<dialog id="result" class="notice result">
+  <div id="result-body"></div>
+  <form method="dialog"><button class="primary" id="result-close">Start a new company</button></form>
+</dialog>
+
+<script src="code-dump/snippets.js"></script>
+<script src="src/balance.js"></script>
+<script src="src/content.js"></script>
+<script src="src/content-fevers.js"></script>
+<script src="src/rng.js"></script>
+<script src="src/core/state.js"></script>
+<script src="src/core/tasks.js"></script>
+<script src="src/core/typing.js"></script>
+<script src="src/core/fevers.js"></script>
+<script src="src/core/agents.js"></script>
+<script src="src/core/market.js"></script>
+<script src="src/core/quality.js"></script>
+<script src="src/core/social.js"></script>
+<script src="src/core/shop.js"></script>
+<script src="src/core/progression.js"></script>
+<script src="src/core/forecast.js"></script>
+<script src="src/core/events.js"></script>
+<script src="src/core/offline.js"></script>
+<script src="src/core/demo.js"></script>
+<script src="src/core/tick.js"></script>
+<script src="src/save.js"></script>
+<script src="src/strings.en.js"></script>
+<script src="src/strings.ko.js"></script>
+<script src="src/strings-reviews.ko.js"></script>
+<script src="src/i18n.js"></script>
+<script src="src/ui/format.js"></script>
+<script src="src/ui/names.js"></script>
+<script src="src/ui/panel.js"></script>
+<script src="src/ui/art.js"></script>
+<script src="src/ui/scene.js"></script>
+<script src="src/ui/minigame.js"></script>
+<script src="src/ui/chart.js"></script>
+<script src="src/ui/tutorial.js"></script>
+<script src="src/ui/views.js"></script>
+<script src="src/ui/toast.js"></script>
+<script src="src/ui/sound.js"></script>
+<script src="src/ui/fx.js"></script>
+<script src="src/input.js"></script>
+<script src="src/main.js"></script>
+</body>
+</html>
